@@ -55,6 +55,13 @@ class Creature:
             self.appetite = min(100 , self.appetite + 20)
 
         
+
+
+        def new_day(self):
+            pass
+
+            
+
     
 
 
