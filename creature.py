@@ -1,5 +1,5 @@
 import random
-
+import statistics
 
 
 class Creature:
@@ -14,6 +14,13 @@ class Creature:
         self.appetite = 100
         self.creatures.append(self)
 
+    def get_cutoff(self):
+        speeds = []
+        for i in range(self.creatures):
+            speeds.append(i.speed)
+
+        cutoff = statistics.mean(speeds) * 1.5
+        return cutoff
 
     def reproduce(self):
 
@@ -57,8 +64,14 @@ class Creature:
         
 
 
-        def new_day(self):
-            pass
+    def new_day(self):
+        self.appetite -= 20
+
+        self.eat(self.get_cutoff())
+
+        if self.appetite > 80:
+            self.reproduce()
+
 
             
 
