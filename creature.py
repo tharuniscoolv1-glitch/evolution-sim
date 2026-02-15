@@ -4,7 +4,7 @@ import statistics
 
 class Creature:
 
-    creatures = []
+    
 
     def __init__(self , health=100 , speed=10 , mut_chance=1):
         
@@ -12,7 +12,7 @@ class Creature:
         self.speed = speed
         self.mut_chance = mut_chance
         self.appetite = 100
-        self.creatures.append(self)
+        
 
     def get_cutoff(self):
         speeds = []
