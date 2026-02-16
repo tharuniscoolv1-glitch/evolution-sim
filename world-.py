@@ -8,21 +8,22 @@ class World:
         self.population = population = [] 
 
         for i in range(banana_population):
-            creature = Creature(
+            c = Creature(
                 health = 100,
                 speed = 10,
                 mut_chance = 1,
                 appetite = 100)
 
-            self.population.append(creature)
+            self.population.append(c)
 
     def update(self):
         for creature in self.population:
             creature.update()
 
     def display_population(self):
-        print('population size', len(self.population))
+        print('population:', len(self.population))
    
+
 
 
 
