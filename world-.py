@@ -1,4 +1,4 @@
-
+from creature import Creature 
 
 class World:
 
@@ -23,6 +23,7 @@ class World:
     def display_population(self):
         print('population size', len(self.population))
    
+
 
 
 
