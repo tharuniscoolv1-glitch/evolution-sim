@@ -14,14 +14,6 @@ class Creature:
         self.appetite = appetite
         
 
-    def get_cutoff(self):
-        speeds = []
-        for i in range(self.creatures):
-            speeds.append(i.speed)
-
-        cutoff = statistics.mean(speeds) * 1.5
-        return cutoff
-
     def reproduce(self):
 
 
