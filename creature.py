@@ -6,7 +6,7 @@ class Creature:
 
     
 
-    def __init__(self , health=100 , speed=10 , mut_chance=1, self.appetite=100, ):
+    def __init__(self , health=100 , speed=10 , mut_chance=1, appetite=100, ):
         
         self.health = health
         self.speed = speed
