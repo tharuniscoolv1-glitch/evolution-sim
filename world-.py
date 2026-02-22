@@ -1,13 +1,14 @@
 from creature import Creature 
+import statistics
 
 class World:
 
-    def __init__(self, width, height, banana_population):
+    def __init__(self, width, height, population):
         self.width = width
         self.height = height
-        self.population = population = [] 
+        self.population = [] 
 
-        for i in range(banana_population):
+        for i in range(population):
             c = Creature(
                 health = 100,
                 speed = 10,
@@ -23,6 +24,7 @@ class World:
     def display_population(self):
         print('population:', len(self.population))
    
+
 
 
 
