@@ -6,14 +6,14 @@ class Creature:
 
     
 
-    def __init__(self , health=100 , speed=10 , mut_chance=1, appetite=100, range_ =5):
+    def __init__(self , health=100 , speed=10 , mut_chance=1, appetite=100, range_ =5, score = 0):
         
         self.health = health
         self.speed = speed
         self.mut_chance = mut_chance
         self.appetite = appetite
         self.range = range_
-        self.score = 0
+        self.score = score
 
     def reproduce(self):
 
