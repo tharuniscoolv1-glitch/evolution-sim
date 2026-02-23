@@ -27,12 +27,12 @@ class World:
         print('population:', len(self.population))
 
     def get_cutoff(self):
-        if not self.populationn:    
+        if not self.population:    
             return 0 
 
-        speeds = [creature.speed*creature.range for creature in self.creature ]
+        fitness = [c.speed*c.range for c in self.population]
 
-        average_speed = statistics.mean(speeds)
+        average_speed = statistics.mean(fitness)
 
         cutoff = average_speed*1.5
         return cutoff 
@@ -48,6 +48,7 @@ class World:
     
     
    
+
 
 
 
