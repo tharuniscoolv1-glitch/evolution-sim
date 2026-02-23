@@ -32,22 +32,23 @@ class World:
 
         fitness = [c.speed*c.range for c in self.population]
 
-        average_speed = statistics.mean(fitness)
+        average_fitness = statistics.mean(fitness)
 
-        cutoff = average_speed*1.5
+        cutoff = average_fitness*1.5
         return cutoff 
 
     def speed_scoring(self):
         cutoff = self.get_cutoff()
 
-        for creature in self.population:
-            if creature.speed*creature.range > cutoff:
-                creature.score = creature.score + 1
+        for Creature in self.population:
+            if c.speed*c.range > cutoff:
+                c.score = c.score + 1
 
 
     
     
    
+
 
 
 
