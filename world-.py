@@ -9,7 +9,7 @@ class World:
         self.population = []
 
         for i in population:
-            c = Creature(
+            creature = Creature(
                 health = 100,
                 speed = 10,
                 mut_chance = 1,
@@ -26,9 +26,13 @@ class World:
 
             if baby:
                 self.population.append(baby)
-
+        self.remove_dead_creatures()
+    
+    def remove_dead_creatures(self):
+        alive = [ creature for creature in self.population if not creature.is_dead()]
+        self.population = alive
+        
                 
-
     def display_population(self):
         print('population:', len(self.population))
 
@@ -50,6 +54,7 @@ class World:
     
     
    
+
 
 
 
