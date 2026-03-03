@@ -3,10 +3,10 @@ import statistics
 
 class World:
 
-    def __init__(self, width, height, population):
+    def __init__(self, width, height, population : list):
         self.width = width
         self.height = height
-        self.population = [] 
+        self.population = population
 
         for i in range(population):
             c = Creature(
@@ -14,7 +14,7 @@ class World:
                 speed = 10,
                 mut_chance = 1,
                 appetite = 100,
-            range_ = 5, score = 0
+            range = 5, score = 0
             )
 
             self.population.append(c)
@@ -40,7 +40,7 @@ class World:
     def speed_scoring(self):
         cutoff = self.get_cutoff()
 
-        for Creature in self.population:
+        for c in self.population:
             if c.speed*c.range > cutoff:
                 c.score = c.score + 1
 
