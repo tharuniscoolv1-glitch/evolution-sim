@@ -6,7 +6,7 @@ class World:
     def __init__(self, width, height, population : list):
         self.width = width
         self.height = height
-        self.population = population
+        self.population = []
 
         for i in range(population):
             c = Creature(
@@ -21,12 +21,17 @@ class World:
 
     def update(self):
         for creature in self.population:
-            creature.update()
+            baby = creature.new_day(cutoff=self.current_cutoff , return_baby=True)
+
+            if baby:
+                self.population.append(baby)
 
     def display_population(self):
         print('population:', len(self.population))
 
-    def get_cutoff(self):
+
+    @property
+    def current_cutoff(self):
         if not self.population:    
             return 0 
 
@@ -34,15 +39,9 @@ class World:
 
         average_fitness = statistics.mean(fitness)
 
-        cutoff = average_fitness*1.5
+        cutoff = average_fitness
         return cutoff 
 
-    def speed_scoring(self):
-        cutoff = self.get_cutoff()
-
-        for c in self.population:
-            if c.speed*c.range > cutoff:
-                c.score = c.score + 1
 
 
     

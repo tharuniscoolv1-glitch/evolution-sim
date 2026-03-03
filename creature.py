@@ -41,10 +41,10 @@ class Creature:
         can_eat = False
         can_eat_twice = False
 
-        if self.speed > cutoff:
+        if self.speed * self.range > cutoff:
             can_eat = True
 
-        if self.speed > (cutoff * 1.5):
+        if self.speed * self.range > (cutoff * 1.5):
             can_eat_twice = True
 
         if can_eat_twice:
