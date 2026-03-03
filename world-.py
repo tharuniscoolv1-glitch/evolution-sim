@@ -8,23 +8,26 @@ class World:
         self.height = height
         self.population = []
 
-        for i in range(population):
+        for i in population:
             c = Creature(
                 health = 100,
                 speed = 10,
                 mut_chance = 1,
                 appetite = 100,
-            range = 5, score = 0
+            range = 5
             )
 
             self.population.append(c)
 
     def update(self):
-        for creature in self.population:
+
+        for creature in self.population[:]:
             baby = creature.new_day(cutoff=self.current_cutoff , return_baby=True)
 
             if baby:
                 self.population.append(baby)
+
+                
 
     def display_population(self):
         print('population:', len(self.population))
