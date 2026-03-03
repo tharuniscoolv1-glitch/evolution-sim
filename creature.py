@@ -53,12 +53,11 @@ class Creature:
         elif can_eat:
             self.appetite = min(100 , self.appetite + 20)
 
-        
-
+    
 
     def new_day(self , cutoff , return_baby=False):
+        baby = None
         self.appetite -= 20
-
         self.eat(cutoff=cutoff)
 
         if self.appetite > 80:
