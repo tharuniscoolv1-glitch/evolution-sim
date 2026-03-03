@@ -4,18 +4,15 @@ import statistics
 
 class Creature:
 
-    
-
-    def __init__(self , health=100 , speed=10 , mut_chance=1, appetite=100, range_ =5, score = 0):
+    def __init__(self , health=100 , speed=10 , mut_chance=1, appetite=100, range =5):
         
         self.health = health
         self.speed = speed
         self.mut_chance = mut_chance
         self.appetite = appetite
-        self.range = range_
-        self.score = score
+        self.range = range
 
-    def reproduce(self):
+    def reproduce(self , return_baby=False):
 
 
         baby_health = self.health
@@ -36,11 +33,13 @@ class Creature:
             
         baby = Creature(health=baby_health , speed=baby_speed , mut_chance=baby_mut_chance)
 
+        if return_baby:
+            return baby
+
 
     def eat(self , cutoff):
         can_eat = False
         can_eat_twice = False
-
 
         if self.speed > cutoff:
             can_eat = True
@@ -57,20 +56,17 @@ class Creature:
         
 
 
-    def new_day(self):
+    def new_day(self , cutoff , return_baby=False):
         self.appetite -= 20
 
-        self.eat(self.get_cutoff())
+        self.eat(cutoff=cutoff)
 
         if self.appetite > 80:
-            self.reproduce()
+            baby = self.reproduce(return_baby=return_baby)
+
+        if return_baby:
+            return baby
+        
 
 
             
-
-    
-
-
-
-
-
