@@ -33,6 +33,7 @@ class Creature:
             
         baby = Creature(health=baby_health , speed=baby_speed , mut_chance=baby_mut_chance)
 
+        self.appetite -= 40
         if return_baby:
             return baby
 
