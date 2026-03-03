@@ -66,6 +66,9 @@ class Creature:
 
         if return_baby:
             return baby
+
+    def is_dead(self):
+        return self.appetite < = 0 or self.health < = 0
         
 
 
