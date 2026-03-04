@@ -33,7 +33,7 @@ class Creature:
             
         baby = Creature(health=baby_health , speed=baby_speed , mut_chance=baby_mut_chance)
 
-        self.appetite -= 40
+        self.appetite -= 20
         if return_baby:
             return baby
 
@@ -66,6 +66,7 @@ class Creature:
 
         if return_baby:
             return baby
+
 
     def is_dead(self):
         return self.appetite <= 0 or self.health <= 0 
