@@ -12,17 +12,9 @@ class Creature:
         self.speed = speed
         self.mut_chance = mut_chance
         self.appetite = appetite
-        
+        self.range = range
 
-    def get_cutoff(self):
-        speeds = []
-        for i in range(self.creatures):
-            speeds.append(i.speed)
-
-        cutoff = statistics.mean(speeds) * 1.5
-        return cutoff
-
-    def reproduce(self):
+    def reproduce(self , return_baby=False):
 
 
         baby_health = self.health
@@ -43,16 +35,19 @@ class Creature:
             
         baby = Creature(health=baby_health , speed=baby_speed , mut_chance=baby_mut_chance)
 
+        self.appetite -= 20
+        if return_baby:
+            return baby
+
 
     def eat(self , cutoff):
         can_eat = False
         can_eat_twice = False
 
-
-        if self.speed > cutoff:
+        if self.speed * self.range > cutoff:
             can_eat = True
 
-        if self.speed > (cutoff * 1.5):
+        if self.speed * self.range > (cutoff * 1.5):
             can_eat_twice = True
 
         if can_eat_twice:
@@ -61,23 +56,23 @@ class Creature:
         elif can_eat:
             self.appetite = min(100 , self.appetite + 20)
 
+    
+
+    def new_day(self , cutoff , return_baby=False):
+        baby = None
+        self.appetite -= 20
+        self.eat(cutoff=cutoff)
+
+        if self.appetite > 80:
+            baby = self.reproduce(return_baby=return_baby)
+
+        if return_baby:
+            return baby
+
+
+    def is_dead(self):
+        return self.appetite <= 0 or self.health <= 0 
         
 
 
-    def new_day(self):
-        self.appetite -= 20
-
-        self.eat(self.get_cutoff())
-
-        if self.appetite > 80:
-            self.reproduce()
-
-
             
-
-    
-
-
-
-
-

@@ -3,16 +3,16 @@ import statistics
 
 class World:
 
-    def __init__(self, width, height, population : int):
+    def __init__(self, width, height, population : list):
         self.width = width
         self.height = height
         self.population = []
 
-        for c in range(population):
+        for c in population:
             creature = Creature(
                 health = 100,
                 speed = 10,
-                mut_chance = 10,
+                mut_chance = 1,
                 appetite = 100,
             range = 5
             )
@@ -44,14 +44,23 @@ class World:
 
         fitness = [c.speed*c.range for c in self.population]
 
-        average_fitness = statistics.mean(fitness) * 0.8
+        average_fitness = statistics.mean(fitness)
 
         cutoff = average_fitness
         return cutoff 
 
-new_world = World(5 , 5 , 150)
 
-for i in range(15):
-    new_world.update()
-    new_world.display_population()
+
+    
+    
+   
+
+
+
+
+
+
+
+
+
 
