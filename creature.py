@@ -6,8 +6,8 @@ class Creature:
 
     
 
-    def __init__(self , health=100 , speed=10 , mut_chance=1, appetite=100):
-        
+    def __init__(self , health=100 , speed=10 , mut_chance=1, appetite=100, range=5):
+    
         self.health = health
         self.speed = speed
         self.mut_chance = mut_chance
@@ -15,25 +15,35 @@ class Creature:
         self.range = range
 
     def reproduce(self , return_baby=False):
-
-
+        if self.appletite > 80: 
+            baby = self.reproduce(return_baby=True)
+            self.appetite -= 40
+        if return_baby:
+            return baby 
+        
         baby_health = self.health
         baby_speed = self.speed
         baby_mut_chance = self.mut_chance
+        baby_range = self.range
+        
         
         if self.mut_chance >= random.randint(0 , 100):
             a = random.randint(1 ,3)
             if a == 1:
                 baby_health = max(1 , (baby_health + random.randint(-2 , 2)))
 
-            
             elif a == 2:
                 baby_speed = max(1 , (baby_speed + random.randint(-2 , 2)))
 
             else:
-                baby_mut_chance = max(1 , (baby_mut_chance + random.randint(-1 , 1)))           
+                baby_mut_chance = max(1 , (baby_mut_chance + random.randint(-1 , 1)))
             
-        baby = Creature(health=baby_health , speed=baby_speed , mut_chance=baby_mut_chance)
+        baby = Creature(
+            health=baby_health ,
+            speed=baby_speed ,
+            mut_chance=baby_mut_chance,
+            range=baby_range,
+        )
 
         self.appetite -= 20
         if return_baby:
